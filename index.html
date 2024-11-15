@@ -1,0 +1,559 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Easy Schedule - Appointment Management</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+        /* Background Gradient */
+        body {
+            background: linear-gradient(135deg, #5b4588);
+            color: #333;
+            line-height: 1.6;
+        }
+        /* Navbar Styling */
+    .navbar {
+      background-color: #40084a;
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Navbar Title Styling */
+.navbar h1 {
+    font-weight: 700;
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+/* Navbar List Styling */
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navbar Link Styling */
+.navbar a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: color 0.3s, background-color 0.3s;
+}
+
+/* Navbar Hover Effects */
+.navbar a:hover {
+    color: #fff;
+    background-color: #297d14;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Sign Up / Login Styling */
+.navbar .auth-button {
+    background-color: #fff;
+    color: #40084a;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    border: 2px solid #40084a;
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+}
+
+.navbar .auth-button:hover {
+    background-color: #297d14;
+    color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Pop-up Window Styling */
+.modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    color: #40084a;
+    padding: 2rem;
+    width: 300px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    z-index: 1000;
+}
+
+.modal.show {
+    display: block;
+}
+
+.modal-header {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.modal-close {
+    color: #40084a;
+    font-size: 1.2rem;
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    cursor: pointer;
+}
+
+        /* Header Styling */
+        .header {
+            text-align: center;
+            padding: 4rem 2rem;
+            background-image: url('image.jpg');;
+            border-radius: 10px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            margin: 2rem auto;
+        }
+        .header h2 {
+            font-size: 3rem;
+            color: rgba(226,218,242);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .header p {
+            font-size: 1.2rem;
+            margin: 1rem 0;
+        }
+        .cta-button {
+            background-color: #32964e;
+            color: #40084a;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 1rem;
+            transition: background-color 0.3s;
+        }
+        .cta-button:hover {
+            background-color: #e64a19;
+        }
+        /* Features Section */
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 4rem 2rem;
+        }
+        .feature-box {
+            flex: 1;
+            min-width: 280px;
+            margin: 1rem;
+            padding: 2.5rem;
+            background: linear-gradient(135deg,rgba(226,218,242), #b58abb);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .feature-box:hover {
+            background-color: #28a745; /* Green color on hover */
+            color: rgb(123, 11, 81); /* White text on hover */
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-box:hover i {
+            color: #297d14; /* White icons on hover */
+        }
+
+        
+
+        
+        /* Footer Section */
+        .footer {
+            background: linear-gradient(135deg, #40084a, #000428);
+            color: white;
+            padding: 3rem 2rem;
+            font-size: 0.9rem;
+        }
+        .footer-content {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+            margin: 1rem;
+        }
+        .footer-column h4 {
+            font-size: 1.2rem;
+            color: #297d14;
+            margin-bottom: 1rem;
+        }
+        .footer-column ul {
+            list-style: none;
+        }
+        .footer-column ul li {
+            margin-bottom: 0.5rem;
+        }
+        .footer-column ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .footer-column ul li a:hover {
+            color:#297d14;
+        }
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+        .social-icons a:hover {
+            color: #297d14;
+        }
+        .footer-bottom {
+            text-align: center;
+            margin-top: 2rem;
+            color: #bbb;
+            font-size: 0.85rem;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .navbar ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.75rem;
+            }
+            .header h2 {
+                font-size: 2.2rem;
+            }
+            .features {
+                flex-direction: column;
+            }
+            .feature-box {
+                margin: 1.5rem 0;
+            }
+            .footer-content {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar {
+                flex-direction: column;
+                text-align: center;
+            }
+            .header h2 {
+                font-size: 1.8rem;
+            }
+            .cta-button {
+                font-size: 0.9rem;
+                padding: 0.75rem 1.5rem;
+            }
+            .features {
+                padding: 2rem 1rem;
+            }
+            .feature-box {
+                padding: 1.5rem;
+            }
+            .footer {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <h1>BOOK-EASE</h1>
+        <ul>
+            <li><a href="#home">HOME</a></li>
+            <li><a href="#why-us">WHY US</a></li>
+            <li><a href="#about">ABOUT</a></li>
+            <li><a href="#services">SERVICES</a></li>
+            <li><a href="#contact">CONTACT</a></li>
+            <li><a href="#sign-up/Login">SIGN-UP/LOGIN</a></li>
+        </ul>
+    </nav>
+
+    <!-- Unified Main Section -->
+    <section id="main-section">
+        <header class="header">
+            <h2>Effortless Appointment Scheduling</h2>
+            <button class="cta-button">Get Started</button>
+        </header>
+    
+        <!-- Features Content -->
+        <div class="features">
+            <div class="feature-box">
+                <h3>
+                    <i class="fas fa-calendar-check"></i> Easy Scheduling
+                </h3>
+                <p>Allow clients to book appointments at their convenience with real-time availability updates.</p>
+            </div>
+            <div class="feature-box">
+                <h3>
+                    <i class="fas fa-bell"></i> Automatic Notifications
+                </h3>
+                <p>Stay updated with notifications for bookings, cancellations, and reminders.</p>
+            </div>
+            <div class="feature-box">
+                <h3>
+                    <i class="fas fa-calendar-alt"></i> Calendar Integration
+                </h3>
+                <p>Integrate with popular calendars like Google, Outlook, and iCal to manage appointments seamlessly.</p>
+            </div>
+            <div class="feature-box">
+                <h3>
+                    <i class="fas fa-link"></i> Customizable Links
+                </h3>
+                <p>Share personalized booking links to streamline client scheduling.</p>
+            </div>
+        </div>
+    
+        <!-- Why Us Section -->
+        <div class="why-us" style="max-width: 900px; margin: 4rem auto; text-align: center;">
+            <h2 style="color: #40084a; font-size: 3rem; font-weight: 700;">WHY CHOOSE US?</h2>
+            <p style="color: #333; font-size: 1.4rem; line-height: 2; margin-bottom: 2rem;">
+                At Easy Schedule, we prioritize user-friendly design, reliability, and efficiency. Our platform simplifies appointment management, saves you time, and enhances client satisfaction.
+            </p>
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem;">
+                <div class="feature-box" style="max-width: 200px; background-color: #f9f9f9; padding: 2rem; border-radius: 10px; box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);">
+                    <h3 style="color: #40084a; font-size: 1.5rem; margin-bottom: 1rem;">
+                        <i class="fas fa-user-shield" style="color: #297d14;"></i> Trusted by Professionals
+                    </h3>
+                    <p style="color: #555; font-size: 1.2rem; line-height: 1.6;">
+                        Join thousands of businesses who rely on Easy Schedule for seamless appointment management.
+                    </p>
+                </div>
+                <div class="feature-box" style="max-width: 200px; background-color: #f9f9f9; padding: 2rem; border-radius: 10px; box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);">
+                    <h3 style="color: #40084a; font-size: 1.5rem; margin-bottom: 1rem;">
+                        <i class="fas fa-lock" style="color: #297d14;"></i> Top-notch Security
+                    </h3>
+                    <p style="color: #555; font-size: 1.2rem; line-height: 1.6;">
+                        We ensure that your data is protected with industry-leading security measures.
+                    </p>
+                </div>
+                <div class="feature-box" style="max-width: 200px; background-color: #f9f9f9; padding: 2rem; border-radius: 10px; box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);">
+                    <h3 style="color: #40084a; font-size: 1.5rem; margin-bottom: 1rem;">
+                        <i class="fas fa-headset" style="color: #297d14;"></i> Excellent Support
+                    </h3>
+                    <p style="color: #555; font-size: 1.2rem; line-height: 1.6;">
+                        Our dedicated support team is here to help you every step of the way.
+                    </p>
+                </div>
+                
+            </div>
+        </div>
+        
+        <!-- ABOUT US SECTION -->
+<div class="about-us">
+    <h2>ABOUT US</h2>
+    <p>
+        At BOOK-EASE, we understand that managing appointments and scheduling meetings can be a time-consuming and frustrating process, often involving endless email exchanges to find a mutually convenient time. That’s why we’ve developed a smart, web-based scheduling solution that streamlines the entire process, making it easier for both businesses and individuals to manage their time effectively.
+    </p>
+
+    <p>
+        Our platform allows users to set their availability, share booking links, and manage appointments seamlessly. With BOOK-EASE, you can create personalized scheduling links, integrate with your favorite calendar services, and even handle recurring meetings — all in one place. Whether you're a consultant, educator, freelancer, or team manager, we help you save valuable time by automating the scheduling process and ensuring there are no double bookings.
+    </p>
+</div>
+
+<!-- CSS for the blurred background image and text overlay -->
+<style>
+    .about-us {
+        position: relative;
+        max-width: 900px;
+        margin: 4rem auto;
+        padding: 3rem;
+        text-align: center;
+        color: white;
+        background-image: url('download.jpg'); /* Replace with your image URL */
+        background-size: cover;
+        background-position: center;
+        border-radius: 10px;
+        overflow: hidden; /* Ensure the content stays inside the box */
+    }
+
+    /* Blurred overlay */
+    .about-us::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5); /* Dark overlay for better text readability */
+        backdrop-filter: blur(8px); /* Blurs the background image */
+        z-index: 1; /* Ensure the overlay is behind the text */
+    }
+
+    /* Text on top of the blurred background */
+    .about-us h2,
+    .about-us p {
+        position: relative;
+        z-index: 2; /* Ensure text is on top of the overlay */
+        font-weight: 400;
+        color: white;
+    }
+
+    .about-us h2 {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 2rem;
+    }
+
+    .about-us p {
+        font-size: 1.3rem;
+        line-height: 1.8;
+        margin-bottom: 2rem;
+    }
+</style>
+
+        
+    </section>
+    
+
+
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="footer-content">
+            <!-- Services Column -->
+            <div class="footer-column">
+                <h4>Link</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#why us">Why us</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Contact Links</a></li>
+                    <li><a href="#sign-up/Login">Sign-up/Login</a></li>
+                </ul>
+            </div>
+            <div class="footer-column" style="text-align: center;">
+                <h4>Info</h4>
+                <p>Scheduling meetings and appointments <br>
+                   can be a tedious task, often involving <br>
+                   numerous back-and-forth emails to find <br>
+                   a mutually convenient time. Our website <br>
+                   aims to develop a web-based scheduling <br>
+                   application that allows users to set their <br>
+                   availability, share booking links, and <br>
+                   manage appointments seamlessly.
+                </p>
+            </div>
+            
+            
+            <div class="footer-column" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+                <h4>Subscribe</h4>
+                
+                <div class="email-input-container" style="display: flex; flex-direction: column; width: 100%; max-width: 300px;">
+                    <input type="email" class="email-input" placeholder="Enter email here" style="width: 100%; padding: 10px 0; border: none; border-bottom: 2px solid #000; font-size: 16px; outline: none; margin-bottom: 20px;">
+                </div>
+                
+                <button class="subscribe-btn" style="background-color: #4CAF50; border: none; color: white; padding: 15px 30px; font-size: 18px; font-weight: bold; border-radius: 8px; cursor: pointer; box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); transition: background-color 0.3s, box-shadow 0.3s;">
+                    Subscribe
+                </button>
+            </div>
+            
+            <!-- Optional CSS styles -->
+            <style>
+                subscribe-btn:hover {
+                    background-color: #45a049; 
+                    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); 
+                }
+        
+                .subscribe-btn:active {
+                    background-color: #388e3c; 
+                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+                }
+            </style>
+            
+        </div>
+        <!-- Social Media Icons -->
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Social Media Icons</title>
+            <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+            <style>
+                /* Style the container */
+                .social_media {
+                    position: fixed;
+                    bottom: 20px;
+                    right: 20px;
+                    z-index: 1000;
+                }
+        
+                /* Style the list and anchor tags */
+                .social_media ul {
+                    list-style: none;
+                    margin: 0;
+                    padding: 0;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px; /* Space between icons */
+                }
+        
+                .social_media a {
+                    display: block;
+                    width: 50px;
+                    height: 50px;
+                    background-color: #333;
+                    color: white;
+                    text-align: center;
+                    line-height: 50px;
+                    border-radius: 50%;
+                    transition: transform 0.3s, background-color 0.3s;
+                }
+        
+                /* Hover effect */
+                .social_media a:hover {
+                    background-color: #555;
+                    transform: scale(1.2); /* Slightly larger on hover */
+                }
+        
+                /* Active (clicked) state */
+                .social_media a:active {
+                    transform: scale(0.9); /* Slightly smaller when clicked */
+                }
+        
+            </style>
+        </head>
+        <body>
+        
+            <!-- Social Media Section -->
+            <div class="social_media">
+                <ul>
+                  <a href="#"><i class="fa-brands fa-facebook"></i></i></a>
+                  <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                  <a href="#"><i class="fa-brands fa-instagram"></i></i></a>
+                  <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                </ul>
+              </div>
+        
+        </body>
