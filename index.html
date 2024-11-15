@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Easy Schedule - Appointment Management</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
     <style>
         * {
             margin: 0;
@@ -288,17 +290,154 @@
 <body>
 
     <!-- Navbar -->
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Navbar with Hamburger</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+    
+        /* Navbar styling */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #40084a;
+            color: white;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+    
+        .navbar h1 {
+            font-size: 1.5rem;
+        }
+    
+        .navbar-links {
+            display: flex;
+        }
+    
+        .navbar-links ul {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+        }
+    
+        .navbar-links ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+    
+        .navbar-links ul li a:hover {
+            color: #297d14;
+            color: white;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+    
+        /* Hamburger menu styling */
+        .hamburger-menu {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+    
+        .hamburger-menu span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            border-radius: 2px;
+            transition: transform 0.3s, opacity 0.3s;
+        }
+    
+        /* Hamburger transforms into cross */
+        .hamburger-menu.active span:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+    
+        .hamburger-menu.active span:nth-child(2) {
+            opacity: 0;
+        }
+    
+        .hamburger-menu.active span:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+    
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .hamburger-menu {
+                display: flex;
+            }
+    
+            .navbar-links {
+                display: none;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                background-color: #40084a;
+                width: 100%;
+                padding: 1rem 0;
+                text-align: center;
+                flex-direction: column;
+            }
+    
+            .navbar-links.show {
+                display: flex;
+            }
+        }
+    </style>
+    
+</head>
+<body>
+
     <nav class="navbar">
         <h1>BOOK-EASE</h1>
-        <ul>
-            <li><a href="#home">HOME</a></li>
-            <li><a href="#why-us">WHY US</a></li>
-            <li><a href="#about">ABOUT</a></li>
-            <li><a href="#services">SERVICES</a></li>
-            <li><a href="#contact">CONTACT</a></li>
-            <li><a href="#sign-up/Login">SIGN-UP/LOGIN</a></li>
-        </ul>
+        <div class="hamburger-menu" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="navbar-links">
+            <ul>
+                <li><a href="#home">HOME</a></li>
+                <li><a href="#why-us">WHY US</a></li>
+                <li><a href="#about">ABOUT</a></li>
+                <li><a href="#services">SERVICES</a></li>
+                <li><a href="#customers">CUSTOMERS</a></li>
+                <li><a href="#sign-up/Login">SIGN-UP/LOGIN</a></li>
+            </ul>
+        </div>
     </nav>
+
+    <script>
+        // JavaScript for hamburger menu toggle
+        document.addEventListener("DOMContentLoaded", () => {
+            const hamburger = document.querySelector(".hamburger-menu");
+            const navbarLinks = document.querySelector(".navbar-links");
+
+            hamburger.addEventListener("click", () => {
+                hamburger.classList.toggle("active"); // Animate hamburger to cross
+                navbarLinks.classList.toggle("show"); // Show/hide navbar links
+            });
+        });
+    </script>
+
+</body>
+</html>
+
 
     <!-- Unified Main Section -->
     <section id="main-section">
@@ -391,11 +530,11 @@
         padding: 3rem;
         text-align: center;
         color: white;
-        background-image: url('download.jpg'); /* Replace with your image URL */
+        background-image: url('download.jpg'); 
         background-size: cover;
         background-position: center;
         border-radius: 10px;
-        overflow: hidden; /* Ensure the content stays inside the box */
+        overflow: hidden; 
     }
 
     /* Blurred overlay */
@@ -432,68 +571,289 @@
         margin-bottom: 2rem;
     }
 </style>
+<div class="services" style="max-width: 900px; margin: 4rem auto; "></div>
+    <h2 style="color: #40084a; font-size: 3rem; font-weight: 700;text-align: center;">SERVICES</h2>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    </head>
+    
+    <div class="card-container">
+        <!-- Card 1: User Authentication -->
+        <div class="feature-box">
+            <i class="fas fa-user-shield"></i>
+            <h3>User Authentication</h3>
+            <p>Secure and simple sign-up, login, and logout options for users to access their scheduling dashboard.</p>
+        </div>
 
-        
+        <!-- Card 2: Availability Settings -->
+        <div class="feature-box">
+            <i class="fas fa-calendar-check"></i>
+            <h3>Availability Settings</h3>
+            <p>Set your availability for different days and time slots, and customize event types with specific durations.</p>
+        </div>
+
+        <!-- Card 3: Unique Booking Link -->
+        <div class="feature-box">
+            <i class="fas fa-link"></i>
+            <h3>Unique Booking Link</h3>
+            <p>Create a personalized booking link to share with clients, making scheduling quick and easy.</p>
+        </div>
+
+        <!-- Card 4: Appointment Booking -->
+        <div class="feature-box">
+            <i class="fas fa-calendar-alt"></i>
+            <h3>Appointment Booking</h3>
+            <p>Clients can easily view your availability and book appointments with automatic time slot blocking.</p>
+        </div>
+
+        <!-- Card 5: Email Notifications -->
+        <div class="feature-box">
+            <i class="fas fa-envelope"></i>
+            <h3>Email Notifications</h3>
+            <p>Stay informed with email alerts for new bookings, cancellations, and updates.</p>
+        </div>
+
+        <!-- Card 6: Calendar Integration -->
+        <div class="feature-box">
+            <i class="fas fa-sync-alt"></i>
+            <h3>Calendar Integration</h3>
+            <p>Sync your appointments seamlessly with Google Calendar and Outlook.</p>
+        </div>
+
+        <!-- Card 7: Timezone Support -->
+        <div class="feature-box">
+            <i class="fas fa-globe"></i>
+            <h3>Timezone Support</h3>
+            <p>Automatically handle timezones for both you and your clients, ensuring accurate scheduling.</p>
+        </div>
+
+        <!-- Card 8: Recurring Appointments -->
+        <div class="feature-box">
+            <i class="fas fa-redo"></i>
+            <h3>Recurring Appointments</h3>
+            <p>Easily set up and manage recurring appointments for regular clients.</p>
+        </div>
+    </div>
+    <style>
+       /* Basic styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    padding: 20px;
+}
+
+/* Features Section */
+.features-section {
+    text-align: center;
+}
+
+.features-section h2 {
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+    color: #40084a;
+}
+
+/* Card Container */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* Feature Box Styling */
+.feature-box {
+    flex: 1;
+    min-width: 300px; 
+    max-width: 350px;
+    margin: 1rem;
+    padding: 2rem 1.5rem;
+    background: linear-gradient(135deg, rgba(226, 218, 242), #b58abb);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); 
+    border-radius: 15px; 
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s, color 0.3s;
+    cursor: pointer;
+}
+
+/* Icon Styling */
+.feature-box i {
+    font-size: 2rem; /* Larger icon size */
+    color: #40084a;
+    margin-bottom: 1rem;
+}
+
+
+@media (max-width: 768px) {
+    .card-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .feature-box {
+        width: 100%;
+        max-width: 400px; 
+    }
+}
+    </style>
+
     </section>
     
 
 
 
     <!-- Footer Section -->
-    <footer class="footer">
-        <div class="footer-content">
-            <!-- Services Column -->
-            <div class="footer-column">
-                <h4>Link</h4>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#why us">Why us</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#contact">Contact Links</a></li>
-                    <li><a href="#sign-up/Login">Sign-up/Login</a></li>
-                </ul>
-            </div>
-            <div class="footer-column" style="text-align: center;">
-                <h4>Info</h4>
-                <p>Scheduling meetings and appointments <br>
-                   can be a tedious task, often involving <br>
-                   numerous back-and-forth emails to find <br>
-                   a mutually convenient time. Our website <br>
-                   aims to develop a web-based scheduling <br>
-                   application that allows users to set their <br>
-                   availability, share booking links, and <br>
-                   manage appointments seamlessly.
-                </p>
-            </div>
-            
-            
-            <div class="footer-column" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-                <h4>Subscribe</h4>
-                
-                <div class="email-input-container" style="display: flex; flex-direction: column; width: 100%; max-width: 300px;">
-                    <input type="email" class="email-input" placeholder="Enter email here" style="width: 100%; padding: 10px 0; border: none; border-bottom: 2px solid #000; font-size: 16px; outline: none; margin-bottom: 20px;">
-                </div>
-                
-                <button class="subscribe-btn" style="background-color: #4CAF50; border: none; color: white; padding: 15px 30px; font-size: 18px; font-weight: bold; border-radius: 8px; cursor: pointer; box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); transition: background-color 0.3s, box-shadow 0.3s;">
-                    Subscribe
-                </button>
-            </div>
-            
-            <!-- Optional CSS styles -->
-            <style>
-                subscribe-btn:hover {
-                    background-color: #45a049; 
-                    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); 
-                }
-        
-                .subscribe-btn:active {
-                    background-color: #388e3c; 
-                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
-                }
-            </style>
-            
+<footer class="footer">
+    <div class="footer-content">
+        <!-- Services Column -->
+        <div class="footer-column">
+            <h4>Link</h4>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#why-us">Why Us</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact Links</a></li>
+                <li><a href="#sign-up/Login">Sign-up/Login</a></li>
+            </ul>
         </div>
+        <!-- Info Column -->
+        <div class="footer-column">
+            <h4>Info</h4>
+            <p>
+                Scheduling meetings and appointments can be a tedious task, often involving numerous back-and-forth emails to find a mutually convenient time. 
+                Our website aims to develop a web-based scheduling application that allows users to set their availability, share booking links, 
+                and manage appointments seamlessly.
+            </p>
+        </div>
+        <!-- Subscribe Column -->
+        <div class="footer-column">
+            <h4>Subscribe</h4>
+            <div class="subscribe-container">
+                <input type="email" class="email-input" placeholder="Enter email here">
+                <button class="subscribe-btn">Subscribe</button>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        &copy; 2024 BOOK-EASE. All Rights Reserved.
+    </div>
+</footer>
+
+<style>
+/* Reset and basic styles */
+body, ul, p, h4, input, button {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.footer {
+    background-color: #40084a;
+    color: white;
+    padding: 2rem;
+}
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.footer-column {
+    flex: 1;
+    min-width: 250px;
+    margin: 1rem 0;
+}
+.footer-column h4 {
+    text-align: center;
+    margin-bottom: 1rem;
+    color: white;
+    font-size: 1.3rem;
+    border-bottom: 2px solid #297d14;
+    padding-bottom: 0.5rem;
+}
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+.footer-column ul li {
+    margin: 0.5rem 0;
+}
+.footer-column ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+.footer-column ul li a:hover {
+    color: #297d14;
+}
+.footer-column p {
+    text-align: justify;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* Subscribe container */
+.subscribe-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem; /* Space between email input and button */
+}
+.email-input {
+    width: 100%;
+    max-width: 300px;
+    padding: 0.5rem;
+    border: none;
+    border-bottom: 2px solid #fff;
+    background: transparent;
+    color: white;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s;
+}
+.email-input:focus {
+    border-color: #297d14;
+}
+.subscribe-btn {
+    background-color: #297d14;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+.subscribe-btn:hover {
+    background-color: #4CAF50;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.footer-bottom {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 0.85rem;
+    color: #bbb;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+    }
+    .footer-column {
+        text-align: center;
+    }
+}
+</style>
+
+
         <!-- Social Media Icons -->
         <head>
             <meta charset="UTF-8">
