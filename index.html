@@ -510,7 +510,6 @@
         </div>
         <div class="services" style="max-width: 900px; margin: 4rem auto; "></div>
     <h2 style="color: #40084a; font-size: 3rem; font-weight: 700;text-align: center;">SERVICES</h2>
-    <p>Everything u can need at one place</p>
     <head>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     </head>
@@ -631,7 +630,7 @@ body {
 
     .feature-box {
         width: 100%;
-        max-width: 400px; 
+        max-width: 600px; 
     }
 }
     </style>
@@ -701,7 +700,281 @@ body {
         margin-bottom: 2rem;
     }
 </style>
-
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testimonials Slider</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f9;
+      }
+      .testimonials-container {
+        width: 80%;
+        margin: 50px auto;
+        overflow: hidden;
+        position: relative;
+      }
+      .testimonials-slider {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+      }
+      .testimonial-card {
+        flex: 0 0 100%;
+        max-width: 100%;
+        text-align: center;
+        background: #fff;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        border-radius: 10px;
+      }
+      .testimonial-card img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        margin-bottom: 10px;
+      }
+      .testimonial-card h3 {
+        font-size: 18px;
+        color: #333;
+        margin-bottom: 10px;
+      }
+      .testimonial-card p {
+        font-size: 16px;
+        color: #666;
+        margin-bottom: 15px;
+      }
+      .testimonial-card .rating {
+        color: #FFD700;
+        font-size: 20px;
+      }
+      /* Slider navigation */
+      .navigation {
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        transform: translateY(-50%);
+      }
+      .nav-btn {
+        background-color: rgba(0, 0, 0, 0.5);
+        border: none;
+        color: #fff;
+        padding: 10px;
+        cursor: pointer;
+        border-radius: 50%;
+      }
+      .nav-btn:hover {
+        background-color: #333;
+      }
+    </style>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Testimonials Slider</title>
+        <style>
+            /* Base Styles */
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: #eff3ec;
+                color: #40084a;
+            }
+    
+            .testimonial-container {
+                width: 100%;
+                max-width: 800px;
+                margin: 50px auto;
+                text-align: center;
+            }
+    
+            .testimonial-slider {
+                position: relative;
+                overflow: hidden;
+                border-radius: 15px;
+                background-color: white;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+    
+            .testimonial-cards {
+                display: flex;
+                transition: transform 0.5s ease-in-out;
+            }
+    
+            .testimonial-card {
+                flex: 0 0 100%;
+                padding: 30px;
+                box-sizing: border-box;
+            }
+    
+            .testimonial-image {
+                width: 80px;
+                height: 80px;
+                margin: 0 auto 20px;
+                border-radius: 50%;
+                border: 2px solid #007BFF;
+                overflow: hidden;
+            }
+    
+            .testimonial-image img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+    
+            .testimonial-name {
+                font-size: 18px;
+                font-weight: bold;
+                margin-bottom: 10px;
+                color: #007BFF;
+            }
+    
+            .testimonial-comment {
+                font-size: 16px;
+                color: #555;
+                margin-bottom: 15px;
+            }
+    
+            .testimonial-rating {
+                color: #FFD700;
+            }
+    
+            /* Navigation Buttons */
+            .nav-buttons {
+                display: flex;
+                justify-content: space-between;
+                position: absolute;
+                width: 100%;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+    
+            .nav-buttons button {
+                background: none;
+                border: none;
+                font-size: 24px;
+                cursor: pointer;
+                padding: 10px;
+                color: #007BFF;
+            }
+    
+            .nav-buttons button:hover {
+                color: #0056b3;
+            }
+    
+            /* Responsive */
+            @media (max-width: 768px) {
+                .testimonial-card {
+                    padding: 20px;
+                }
+    
+                .testimonial-name {
+                    font-size: 16px;
+                }
+    
+                .testimonial-comment {
+                    font-size: 14px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="testimonial-container">
+            <h1>What Our Customers Say</h1>
+            <div class="testimonial-slider" id="testimonial-slider">
+                <div class="testimonial-cards">
+                    <!-- Testimonial 1 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-image">
+                            <img src="p1.jpg" alt="Customer Image">
+                        </div>
+                        <div class="testimonial-name">Mr.teddy</div>
+                        <div class="testimonial-comment">"This scheduling app made managing my appointments effortless! Highly recommend it."</div>
+                        <div class="testimonial-rating">★★★★★</div>
+                    </div>
+                    <!-- Testimonial 2 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-image">
+                            <img src="p2.jpg" alt="Customer Image">
+                        </div>
+                        <div class="testimonial-name">Leonardo da vincci</div>
+                        <div class="testimonial-comment">"The best scheduling tool I’ve ever used! It saved me hours every week."</div>
+                        <div class="testimonial-rating">★★★★★</div>
+                    </div>
+                    <!-- Testimonial 3 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-image">
+                            <img src="p3.jpg" alt="Customer Image">
+                        </div>
+                        <div class="testimonial-name">Emily Brown</div>
+                        <div class="testimonial-comment">"Fantastic! Easy to use and very professional-looking booking pages."</div>
+                        <div class="testimonial-rating">★★★★☆</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-image">
+                            <img src="p4.jpg" alt="Customer Image">
+                        </div>
+                        <div class="testimonial-name">Chris Evans</div>
+                        <div class="testimonial-comment">"What a time-saver! The app is intuitive, fast, and handles all my scheduling needs in one place. The support team is also incredibly responsive."</div>
+                        <div class="testimonial-rating">★★★★★</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-image">
+                            <img src="p5.jpg" alt="Customer Image">
+                        </div>
+                        <div class="testimonial-name">Tony Stark</div>
+                        <div class="testimonial-comment">"The payment integration is a lifesaver! My clients can book and pay at the same time. This has transformed the way I handle bookings."</div>
+                        <div class="testimonial-rating">★★★★★</div>
+                    </div>
+                </div>
+                <div class="nav-buttons">
+                    <button id="prev-btn">&#8249;</button>
+                    <button id="next-btn">&#8250;</button>
+                </div>
+            </div>
+        </div>
+    
+        <script>
+            // JavaScript for Sliding
+            const slider = document.querySelector('.testimonial-cards');
+            const cards = document.querySelectorAll('.testimonial-card');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            let currentIndex = 0;
+    
+            function updateSlider() {
+                const cardWidth = cards[0].clientWidth;
+                slider.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+            }
+    
+            nextBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % cards.length;
+                updateSlider();
+            });
+    
+            prevBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + cards.length) % cards.length;
+                updateSlider();
+            });
+    
+            // Auto-slide functionality
+            setInterval(() => {
+                currentIndex = (currentIndex + 1) % cards.length;
+                updateSlider();
+            }, 5000);
+    
+            // Update slider on resize
+            window.addEventListener('resize', updateSlider);
+        </script>
+    </body>
+    </html>
+    
 
     <!-- Footer Section -->
 <footer class="footer">
