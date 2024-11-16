@@ -974,9 +974,7 @@ body {
         </script>
     </body>
     </html>
-    
-
-    <!-- Footer Section -->
+<!-- Social Media Buttons -->
 <footer class="footer">
     <div class="footer-content">
         <!-- Services Column -->
@@ -1005,14 +1003,88 @@ body {
             <h4>Subscribe</h4>
             <div class="subscribe-container">
                 <input type="email" class="email-input" placeholder="Enter email here">
-                <button class="subscribe-btn">Subscribe</button>
+                <button class="subscribe-btn" onclick="subscribe()">Subscribe</button>
             </div>
         </div>
     </div>
     <div class="footer-bottom">
         &copy; 2024 BOOK-EASE. All Rights Reserved.
     </div>
+
+    <!-- Sticky Social Media Buttons -->
+    <div class="social-icons">
+        <a href="https://facebook.com" target="_blank" class="social-btn facebook" aria-label="Facebook">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://linkedin.com" target="_blank" class="social-btn linkedin" aria-label="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="https://instagram.com" target="_blank" class="social-btn instagram" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://twitter.com" target="_blank" class="social-btn twitter" aria-label="Twitter">
+            <i class="fab fa-twitter"></i>
+        </a>
+        <a href="https://youtube.com" target="_blank" class="social-btn youtube" aria-label="YouTube">
+            <i class="fab fa-youtube"></i>
+        </a>
+    </div>
 </footer>
+<style>
+    /* Sticky Social Media Buttons */
+.social-icons {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    z-index: 1000;
+}
+
+.social-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    background-color: #40084a;
+    border-radius: 50%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.social-btn i {
+    color: white;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.social-btn:hover {
+    background-color: #297d14;
+    transform: scale(1.1);
+}
+
+.social-btn:hover i {
+    color: #ffffff;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .social-icons {
+        bottom: 1rem;
+        right: 1rem;
+    }
+    .social-btn {
+        width: 40px;
+        height: 40px;
+    }
+    .social-btn i {
+        font-size: 1.2rem;
+    }
+}
+
 
 <style>
 /* Reset and basic styles */
@@ -1092,21 +1164,87 @@ body, ul, p, h4, input, button {
 .email-input:focus {
     border-color: #297d14;
 }
+/* Subscribe container */
+.subscribe-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem; /* Space between email input and button */
+}
+
+.email-input {
+    width: 100%;
+    max-width: 300px;
+    padding: 0.8rem;
+    border: 2px solid transparent;
+    background: #f5f5f5;
+    color: #40084a;
+    font-size: 1rem;
+    outline: none;
+    border-radius: 8px; /* Smooth rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+.email-input::placeholder {
+    color: #bbb; /* Lighter placeholder text for contrast */
+    font-style: italic;
+}
+
+.email-input:focus {
+    background: #fff;
+    border-color: #297d14;
+    box-shadow: 0 6px 12px rgba(41, 125, 20, 0.3);
+}
+
 .subscribe-btn {
-    background-color: #297d14;
+    background-color: #1f7730; /* Green base color matching the website */
     color: white;
     border: none;
     padding: 0.75rem 1.5rem;
     font-size: 1rem;
     font-weight: bold;
-    border-radius: 5px;
+    border-radius: 8px; /* Rounded corners for a modern look */
     cursor: pointer;
     transition: background-color 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
 .subscribe-btn:hover {
-    background-color: #4CAF50;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #124713; /* Lighter green for hover effect */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Slightly larger shadow */
 }
+
+.subscribe-btn:active {
+    transform: scale(0.98); 
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1); 
+}
+
+.subscribe-btn {
+    background-color: #09390b; /* Green */
+    color: white;
+    border: none;
+    padding: 15px 32px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s ease; 
+}
+
+/* Hover effect */
+.subscribe-btn:hover {
+    background-color: #09390b; /* Slightly darker green */
+    transform: scale(1.1); /* Slightly increase size */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); 
+}
+
+/* Click effect (active state) */
+.subscribe-btn:active {
+    background-color: #0b4e10; /* Darker green when clicked */
+    transform: scale(0.98); /* Slightly reduce size to simulate pressing effect */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow when pressed */
+}
+
 .footer-bottom {
     text-align: center;
     margin-top: 2rem;
@@ -1125,68 +1263,3 @@ body, ul, p, h4, input, button {
     }
 }
 </style>
-
-
-        <!-- Social Media Icons -->
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Social Media Icons</title>
-            <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-            <style>
-                /* Style the container */
-                .social_media {
-                    position: fixed;
-                    bottom: 20px;
-                    right: 20px;
-                    z-index: 1000;
-                }
-        
-                /* Style the list and anchor tags */
-                .social_media ul {
-                    list-style: none;
-                    margin: 0;
-                    padding: 0;
-                    display: flex;
-                    flex-direction: column;
-                    gap: 10px; /* Space between icons */
-                }
-        
-                .social_media a {
-                    display: block;
-                    width: 50px;
-                    height: 50px;
-                    background-color: #333;
-                    color: white;
-                    text-align: center;
-                    line-height: 50px;
-                    border-radius: 50%;
-                    transition: transform 0.3s, background-color 0.3s;
-                }
-        
-                /* Hover effect */
-                .social_media a:hover {
-                    background-color: #555;
-                    transform: scale(1.2); /* Slightly larger on hover */
-                }
-        
-                /* Active (clicked) state */
-                .social_media a:active {
-                    transform: scale(0.9); /* Slightly smaller when clicked */
-                }
-        
-            </style>
-        </head>
-        <body>
-        
-            <!-- Social Media Section -->
-            <div class="social_media">
-                <ul>
-                  <a href="#"><i class="fa-brands fa-facebook"></i></i></a>
-                  <a href="#"><i class="fa-brands fa-twitter"></i></a>
-                  <a href="#"><i class="fa-brands fa-instagram"></i></i></a>
-                  <a href="#"><i class="fa-brands fa-youtube"></i></a>
-                </ul>
-              </div>
-        
-        </body>
